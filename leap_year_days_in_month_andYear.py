@@ -6,9 +6,8 @@ def is_year_leap(year):
     else:
         return False
 
+
 # this function is used to calculate the days in given month and year
-
-
 def days_in_month(year, month):
     month_31days = [1, 3, 5, 7, 8, 10, 12]
     month_30days = [4, 6, 9, 11]
@@ -22,9 +21,8 @@ def days_in_month(year, month):
         else:
             return 28
 
+
 # this function will give days of any given year-month-day
-
-
 def daysOfyear(year, month, day):
     month = month - 1
     total_day = 0
