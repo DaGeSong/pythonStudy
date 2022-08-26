@@ -1,8 +1,12 @@
+# this function is used to define leap year
+# will return True if it is leap year
 def is_year_leap(year):
     if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:
         return True
     else:
         return False
+
+# this function is used to calculate the days in given month and year
 
 
 def days_in_month(year, month):
@@ -18,6 +22,8 @@ def days_in_month(year, month):
         else:
             return 28
 
+# this function will give days of any given year-month-day
+
 
 def daysOfyear(year, month, day):
     month = month - 1
@@ -28,4 +34,4 @@ def daysOfyear(year, month, day):
     return total_day + day
 
 
-print(daysOfyear(2022, 1, 25))
+print(daysOfyear(2022, 8, 25))
