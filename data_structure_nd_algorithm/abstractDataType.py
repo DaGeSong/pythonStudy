@@ -20,6 +20,7 @@ class Bag(object):
 
     def __iter__(self):
         for item in self._items:
+            # yield will return a generator
             yield item
 
 
