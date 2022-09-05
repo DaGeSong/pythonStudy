@@ -1,11 +1,6 @@
-s = list()
-s.append(1)
-s.append(2)
-s.append(3)
+str = ''
+str += 'hello'
+str += 'hello'
 
-print(s)
 
-s.pop()
-print(s)
-
-print(s[-1])
+print(str)
