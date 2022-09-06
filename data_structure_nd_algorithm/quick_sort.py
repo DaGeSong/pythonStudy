@@ -11,33 +11,25 @@
 # partition function will insert pivot number(first element in the list)
 # into the right position for any given given list, start index, and end index
 # implementation of quick sort in python using hoare partition scheme
-
-def swap(a, b, arr):
-    if a != b:
-        tmp = arr[a]
-        arr[a] = arr[b]
-        arr[b] = tmp
-
-
-def quick_sort(elements, start, end):
-    if start < end:
-        pi = partition(elements, start, end)
-        quick_sort(elements, start, pi-1)
-        quick_sort(elements, pi+1, end)
+def swap(p1, p2, elements):
+    if p1 != p2:
+        temp = elements[p1]
+        elements[p1] = elements[p2]
+        elements[p2] = temp
 
 
 def partition(elements, start, end):
     pivot_index = start
     pivot = elements[pivot_index]
 
-    while start < end:
+    while end > start:
         while start < len(elements) and elements[start] <= pivot:
             start += 1
 
         while elements[end] > pivot:
             end -= 1
 
-        if start < end:
+        if end > start:
             swap(start, end, elements)
 
     swap(pivot_index, end, elements)
@@ -45,9 +37,22 @@ def partition(elements, start, end):
     return end
 
 
+def quick_sort(elements, start, end):
+    if start >= end:
+        # this will be the entry point, when the list is empty or left with one element to sort
+        return elements
+
+    if start < end:
+        pivot_position = partition(elements, start, end)
+        quick_sort(elements, start, pivot_position - 1)
+        quick_sort(elements, pivot_position + 1, end)
+
+
 if __name__ == '__main__':
-    elements = [11, 9, 29, 7, 2, 15, 28]
+    elements = [11, 9, 29, 7, 2, 15, 28, 56, 5, 4, 90, 88, 9, 2, 7]
     # elements = ["mona", "dhaval", "aamir", "tina", "chang"]
+    # # elements = []
+    # elements = [6]
     quick_sort(elements, 0, len(elements)-1)
     print(elements)
 
