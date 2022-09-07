@@ -80,10 +80,9 @@ def locate_card_repetitive(cards_repetitive, query_repetitive):
     while high >= low:
         mid = (low + high) // 2
         if cards_repetitive[mid] == query_repetitive:
-            if cards_repetitive[mid - 1] != query_repetitive:
+            if mid == 0 or cards_repetitive[mid - 1] != query_repetitive:
                 return mid
-            else:
-                high = mid - 1
+            high = mid - 1
         elif cards_repetitive[mid] > query_repetitive:
             low = mid + 1
         else:
@@ -92,6 +91,7 @@ def locate_card_repetitive(cards_repetitive, query_repetitive):
 
 
 cards_repetitive = [80, 77, 65, 58, 55, 55, 54, 45, 34, 32, 12, 8, 6, 4, 2, 1]
-query_repetitive = 40
+cards_repetitive = [55, 55]
+query_repetitive = 55
 better_result = locate_card_repetitive(cards_repetitive, query_repetitive)
 print('this repetitive method will give accurate answer for the repetitive list: ', better_result)

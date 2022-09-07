@@ -1,40 +1,19 @@
-# implementation of quick sort in python using hoare partition scheme
-
-def swap(a, b, arr):
-    if a != b:
-        tmp = arr[a]
-        arr[a] = arr[b]
-        arr[b] = tmp
-
-
-def quick_sort(elements, start, end):
-    if start < end:
-        pi = partition(elements, start, end)
-        quick_sort(elements, start, pi-1)
-        quick_sort(elements, pi+1, end)
+def binary_search(list, num, low, high):
+    while low <= high:
+        mid = (low+high)//2
+        if list[mid] == num:
+            if mid >= 1 and list[mid - 1] == num:
+                return binary_search(list, num, low, mid-1)
+            return mid
+        elif list[mid] > num:
+            return binary_search(list, num, low, mid-1)
+        else:
+            return binary_search(list, num, mid+1, high)
+    return None
 
 
-def partition(elements, start, end):
-    pivot_index = start
-    pivot = elements[pivot_index]
+list = [7, 7]
+num = 7
 
-    while start < end:
-        while start < len(elements) and elements[start] <= pivot:
-            start += 1
-
-        while elements[end] > pivot:
-            end -= 1
-
-        if start < end:
-            swap(start, end, elements)
-
-    swap(pivot_index, end, elements)
-
-    return end
-
-
-if __name__ == '__main__':
-    elements = [11, 9, 29, 7, 2, 15, 28, 56, 5, 4, 90, 88, 9, 2, 7]
-    # elements = ["mona", "dhaval", "aamir", "tina", "chang"]
-    quick_sort(elements, 0, len(elements)-1)
-    print(elements)
+position = binary_search(list, num, 0, len(list)-1)
+print(position)
