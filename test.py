@@ -1,19 +1,23 @@
-def binary_search(list, num, low, high):
-    while low <= high:
-        mid = (low+high)//2
-        if list[mid] == num:
-            if mid >= 1 and list[mid - 1] == num:
-                return binary_search(list, num, low, mid-1)
-            return mid
-        elif list[mid] > num:
-            return binary_search(list, num, low, mid-1)
-        else:
-            return binary_search(list, num, mid+1, high)
+def find_min(elements):
+    if len(elements) > 0:
+        min_index = 0
+        for i in range(1, len(elements)):
+            min = elements[min_index]
+            if elements[i] < min:
+                min_index = i
+        return min_index
     return None
 
 
-list = [7, 7]
-num = 7
+def selection_sort(elements):
+    newlist = []
+    # print(type(newlist))
 
-position = binary_search(list, num, 0, len(list)-1)
-print(position)
+    while len(elements) > 0:
+        min_index = find_min(elements)
+        newlist.append(elements.pop(min_index))
+    return newlist
+
+
+elements = [11, 9, 29, 7, 2, 15, 28, 56, 5, 4, 90, 88, 9, 2, 7]
+print(selection_sort(elements))
