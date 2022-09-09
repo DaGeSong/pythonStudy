@@ -53,6 +53,7 @@ if __name__ == '__main__':
     # elements = ["mona", "dhaval", "aamir", "tina", "chang"]
     # # elements = []
     # elements = [6]
+    elements = [6, 5, 3, 2, 4, 8]
     quick_sort(elements, 0, len(elements)-1)
     print(elements)
 
